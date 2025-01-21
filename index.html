@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+crossorigin=""/>
+  <link rel="stylesheet" href="./style.css"/>
+  <title>Frontend Mentor | IP Address Tracker</title>
+
+</head>
+<body>
+
+  <div class="container">
+      <div class="heading">
+          <p class="iphead">IP Address Tracker</p>
+
+          <div class="ipform">
+            <form>
+              <fieldset class="ipfieldset">
+                <input type="text" id="ipfieldinput" placeholder="Search for any IP address or domain"/>
+                <button type="submit" id="ipsubmitbtn"><img src="./images/icon-arrow.svg"></button>
+              </fieldset>
+            </form>
+          </div>
+      </div>
+      <div class="ipdetailbox">
+          <div class="ipcontentbox">
+            <p class="titleheading"> IP Address</p>
+            <p class="ipcontent"><span id="ipcontentcity"></span><span id="ipcontentstate"></span></p>
+          </div>
+          <div class="ipcontentbox leftborder">
+            <p class="titleheading"> Location </p>
+            <p class="ipcontent"><span id="ipcity">Broklyn, NY</span><br><span id="ipzipcode">10001</span></p>
+          </div>
+          <div class="ipcontentbox leftborder">
+            <p class="titleheading">
+            Timezone
+          </p>
+          <p class="ipcontent"><span> UTC </span><span>-05:00</span></p>
+          
+          </div>
+          <div class="ipcontentbox leftborder">
+            <p class="titleheading">
+            ISP
+          </p>
+          <p class="ipcontent"><span> Space X</span><br><span>Starlink</span></p>
+          </div>
+      </div>
+      <div class="map" id="map">
+
+      </div>
+  </div>
+
+  
+
+
+
+ 
+ 
+
+    
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+  integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+  crossorigin=""></script>
+  <script src="./script.js"></script>
+</body>
+</html>
