@@ -1,9 +1,11 @@
 var api_key = 'at_QZ9kkki6SYlESA8DFhuIc5UxSK9z7';
-
-let ipcontentcity = document.querySelector("#ipcontentcity");
+let ipcontent = document.querySelector("#ipcontent");
 let ipcity = document.querySelector("#ipcity");
+let ipregion = document.querySelector("#ipregion");
 let ipzipcode = document.querySelector("#ipzipcode");
-
+let iptimezone = document.querySelector("#iptimezone");
+let ispname = document.querySelector("#ispname");
+let ispcompany = document.querySelector("#ispcompany");
 
 
 var map = L.map('map').setView([51.505, -0.09], 13);
@@ -35,9 +37,7 @@ let ipsubmitbtn  = document.querySelector("#ipsubmitbtn")
 ipsubmitbtn.addEventListener("click", (e)=>{
     e.preventDefault();
     let ipfieldinputvalue = document.getElementById("ipfieldinput").value;
-    let api_url = `https://geo.ipify.org/api/v2/country?apiKey=${api_key}&ipAddress=${ipfieldinputvalue}`;
-
-   
+    let api_url = `https://geo.ipify.org/api/v1?apiKey=${api_key}&ipAddress=${ipfieldinputvalue}`;
 
     let getIpData = async() =>{
         try{
@@ -45,8 +45,21 @@ ipsubmitbtn.addEventListener("click", (e)=>{
             if(response.ok){
                 const data = await response.json();
                 console.log(data);
-                ipcontentcity.textContent = data.ip;
-                ipcity.textContent = `${data.location.region},`;
+                ipcontent.textContent = data.ip;
+                ipregion.textContent = ` ${data.location.city}, `;
+                ipcity.textContent = `${data.location.country}`;
+                ipzipcode.textContent = data.location.postalCode || "No Zipcode";
+                iptimezone.textContent = data.location.timezone;
+                ispname.textContent = data.as.name;
+                ispcompany.textContent = data.isp;
+
+                let lat = data.location.lat
+                let lng = data.location.lng
+
+                map.setView([lat, lng], 13)
+
+                L.marker([lat,lng], {icon: mapIcon}).addTo(map).bindPopup(`<b>IP Address Location:</b><br>Lat: ${lat}, Lng: ${lng}`).openPopup();
+
             }
 
         }catch(e){
