@@ -1,4 +1,4 @@
-var api_key = 'at_QZ9kkki6SYlESA8DFhuIc5UxSK9z7';
+//var api_key = 'at_QZ9kkki6SYlESA8DFhuIc5UxSK9z7';
 let ipcontent = document.querySelector("#ipcontent");
 let ipcity = document.querySelector("#ipcity");
 let ipregion = document.querySelector("#ipregion");
@@ -37,11 +37,13 @@ let ipsubmitbtn  = document.querySelector("#ipsubmitbtn")
 ipsubmitbtn.addEventListener("click", (e)=>{
     e.preventDefault();
     let ipfieldinputvalue = document.getElementById("ipfieldinput").value;
-    let api_url = `https://geo.ipify.org/api/v1?apiKey=${api_key}&ipAddress=${ipfieldinputvalue}`;
+    //let api_url = `https://geo.ipify.org/api/v1?apiKey=${api_key}&ipAddress=${ipfieldinputvalue}`;
+    let api_url = `/api/ipAddress?ip=${encodeURIComponent(ipfieldinputvalue)}`;
+
 
     let getIpData = async() =>{
         try{
-           const response = await fetch(api_url)
+           const response = await fetch(api_url);
             if(response.ok){
                 const data = await response.json();
                 console.log(data);
@@ -63,7 +65,7 @@ ipsubmitbtn.addEventListener("click", (e)=>{
             }
 
         }catch(e){
-            console.error('Error fetching API:', error);
+            console.error('Error fetching API:', e);
         }
         
     }
